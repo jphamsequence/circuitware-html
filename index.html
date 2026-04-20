@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Defining Circuitware - Research Paper</title>
+    <style>
+        /* ... existing body styles ... */
+        body {
+            user-select: none; 
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            font-family: 'Times New Roman', Times, serif;
+            max-width: 850px;
+            margin: 50px auto;
+            line-height: 1.6;
+            padding: 40px;
+            text-align: justify;
+            background-color: #f4f4f4;
+            color: #1a1a1a;
+        }
+
+        .paper-container {
+            background: white;
+            padding: 60px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 { text-align: center; text-transform: uppercase; font-size: 24px; }
+
+        /* ADD THIS NEW CLASS HERE */
+        .author-name { 
+            text-align: center; 
+            font-size: 18px; 
+            margin-top: -10px; /* Pulls it slightly closer to the title */
+            margin-bottom: 30px; 
+        }
+
+        h2 { border-bottom: 1px solid #ccc; margin-top: 30px; font-size: 20px; }
+        .abstract { font-style: italic; margin: 20px 40px; }
+        .abstract-title { font-weight: bold; text-align: center; display: block; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<div class="paper-container">
+    <h1>Defining “Circuitware” for Field-Programmable Gate Array Architectures</h1>
+    
+    <p class="author-name">Jonathan Pham</p>
+
+    <div class="abstract">
+        <p>Abstract—Traditional hardware design has historically diverged into fixed-function Application-Specific Integrated Circuits (ASICs) and general-purpose processors, with field-programmable gate arrays (FPGA) bridging the gap between software flexibility and dedicated hardware performance. For decades, the aerospace and defense industries have relied on an inherited classification system to categorize system components, often mischaracterizing field-programmable gate array (FPGA) designs as firmware. This classification however is a fundamental misnomer that obscures their spatial, parallel, and physical nature. Adaptive computing platforms have evolved from basic logic gates into heterogeneous acceleration engines, with modern platforms such as the AMD Xilinx Versal Adaptive Compute Acceleration Platform (ACAP) pushing far beyond what can be defined and captured by the term firmware.  This paper proposes revitalizing Circuitware, a term coined by Hewlett-Packard engineers in 1995, defined as user-defined, reconfigurable digital circuitry realized through FPGA implementation. By examining the evolution to advanced platforms like the AMD Xilinx Versal Adaptable Compute Acceleration Platform (ACAP), one can demonstrate how the circuitware model optimizes hardware acceleration, reduces development cycles, and addresses the unique security and performance requirements of aerospace and defense (A&D) applications. Adopting this refined classification will enable the industry to better communicate the architectural shift from fixed-function hardware toward user-driven, programmable hardware architectures.</p>
+    </div>
+    <h2>I. Introduction</h2>
+    <p>In the development of aerospace and defense systems, precise terminology dictates engineering life cycles, verification standards, and certification processes. Defense contractors have typically classified FPGA bitstreams and Hardware Description Language (HDL) designs as firmware, a term that is convenient but technically inaccurate. This classification blurs the critical distinction between sequential instructions executed by a microprocessor and parallel, spatial digital logic instantiated on silicon.
+        <p>
+The term firmware has emerged from the FPGA development workflow which includes HDL coding, synthesis, place and route, and binary file loading. It does not accurately represent the nature of reconfigurable hardware however. With the industry transitioning to multi-domain programmable System-onChips (SoCs) and Adaptive Compute Acceleration Platforms (ACAPs), imprecise terminology such as firmware can lead to conceptual misunderstandings about the expectations in project lifecycles, verification standards, and system architecture designs.
+<p>
+This paper advocates for the formal adoption of Circuitware, a term that accurately reflects the adaptability and hardware-level acceleration of modern programmable architectures which would allow for a contemporary classification for reconfigurable computing systems.
+</p>
+
+    <h2>II. Layers of Digital Stack</h2>
+    <p>To understand the necessity of circuitware, one must first define the existing layers of the digital stack:
+</p>
+    <ul>
+        <li><strong>Hardware:</strong> The physical silicon that represents the fixed-function layer (e.g., ASICs), which offers maximum performance but zero post-fabrication flexibility.</li>
+        <li><strong>Software:</strong> High-level instructions (C/C++, Python) executed sequentially by a central processing unit (CPU).</li>
+        <li><strong>Firmware:</strong> Coined in the late 1960s, firmware refers to low-level software programmed into non-volatile memory (ROM, EEPROM, or Flash) to provide persistent control for a microprocessor. Fundamentally, firmware consists of sequential instructions (machine code) executed by a microprocessor or microcontroller to fetch, decode, and execute instructions temporally. Firmware runs on a processor; it does not create the processor. In defense contracting, this has erroneously become the umbrella term for any code that persists through a power cycle.</li>
+        <li><strong>Gateware:</strong> A term popularized by the FPGA community to describe the configuration of Look-Up Tables (LUTs) and interconnects. While more accurate than firmware, it fails to account for the integrated hard IPs and complex subsystems of modern devices.</li>
+       
+
+    </ul>
+
+    <h2>III. FPGA Implementation Reality</h2>
+    <p>FPGAs consist of uncommitted logic elements (Look-Up Tables, flip-flops, and multiplexers) connected by a programmable routing matrix. The FPGA itself does not execute sequential instructions. When engineers load a bistream onto an FPGA, they are physically altering the electrical pathways within the silicon to instantiate a custom digital circuit. The code is not being “run” on the FPGA, but rather the code itself becomes the FPGA.  This is spatial execution (data flowing through dedicated, parallel logic gates), not temporal execution (software running on a processor).</p>
+
+
+    <h2>IV. The Rise of Circuitware</h2>
+    <p>While the term circuitware is not entirely new to the engineering lexicon, its broader adoption has been delayed by the persistence of software-centric terminology. Originally coined by engineers at Hewlett-Packard in the mid-1990s, HP engineers introduced the concept while describing the development of the HP 8504B Serial Test Controller in the February 1995 edition of the Hewlett-Packard Journal. At the time, Xilinx FPGA technology was utilized to create modularity that was neither hardware nor software. HP’s use of circuitware allowed for the delivery of new functionality through simple software updates that physically reconfigured the underlying hardware. 
+ 
+</p>
+Circuitware was intended to bridge the gap between hardware and software, defining a medium that possessed the performance of hardware as well as the malleability of software.​ Unlike firmware which simply instructs fixed architecture, circuitware is the architecture itself. It allows the end-user to dynamically deploy digital logic, creating customized data paths for specific mission requirements. In defense applications, this allows a single airframe to transition from a Radar-optimized platform to a Jamming-optimized platform via a simple bitstream reload without the latency penalties of software-based processing.
+
+
+    <h2>V. Formal Definition of Circuitware</h2>
+    <p>The proposed definition for circuitware for modern systems engineering is as follows:
+
+ 
+</p>
+
+        <li><strong>Definition:</strong> Circuitware is user-defined, reconfigurable digital circuitry realized through FPGA implementation.</li>
+        </p>
+        This definition emphasizes three critical elements:
+        </p>
+        <li><strong>User-Defined:</strong> The hardware architecture is dictated by the design engineer rather than the silicon foundry.  </li>
+        <li><strong>Reconfigurable:</strong> It acknowledges the dynamic, non-permanent nature of the medium.</li>
+        <li><strong>Digital Circuitry:</strong> It explicitly anchors the technology in hardware engineering, differentiating it from instruction-based firmware.</li>
+
+
+<h2>VI. The Case for Circuitware</h2>
+    <p>Unlike firmware, which merely commands a pre-existing processor, circuitware constructs the processing architecture itself. By leveraging circuitware, defense systems achieve:
+
+ 
+        <li><strong>Dynamic Adaptability:</strong> Modifying digital logic in the field without fabricating new physical circuits.
+        <li><strong>Hardware Acceleration:</strong> Offloading parallel tasks (cryptography, radar signal processing) from CPUs to dedicated, spatially-oriented digital logic.</li>
+        <li><strong>System Customization:</strong> Creating bespoke processing pipelines within a single reconfigurable platform.</li>
+ </p>       
+
+
+
+
+<h2>VII. Circuitware in Modern Heterogeneous Architectures: AMD Xilinx Versal ACAP</h2>
+    <p>The necessity of the term Circuitware is most apparent when examining the latest generation of Adaptive Compute Acceleration Platforms (ACAPs), such as the AMD Versal series. Unlike traditional FPGAs, an ACAP integrates multiple compute domains on a single die. ​In a Versal ACAP, the system is partitioned into three distinct engines:
+<p>
+<li><strong>Scalar Engines:</strong> Standard ARM processors that run high-level Software.
+        <li><strong>Intelligent Engines:</strong> Hardened AI and DSP vector processors that execute instruction-based Firmware.</li>
+        <li><strong>Adaptable Engines:</strong> The programmable logic fabric.</li>
+The designs instantiated within the Adaptable Engines are the Circuitware. By using this specific term, systems engineers can distinguish the custom, parallel digital circuits from the software and firmware running on the adjacent Scalar and Intelligent engines. This clarity is vital for modern defense projects where the Hardware Shell (fixed NoC and memory controllers) must be managed separately from the user-defined logic.
+<p>
+In space-grade variants like the XQR Versal, the platform is designed for in-orbit reconfiguration. Designing for the Versal ACAP requires defining data paths, security enclaves, and neural network pipelines across the silicon. This is the modern realization of the circuitware concept: the engineer is dynamically architecting a custom hardware solution tailored to an evolving mission.
+<p>
+
+<h2>VIII. Comparison with Existing Alternatives: Gateware</h2>
+<p>While the industry has attempted to move away from "firmware" using the term gateware, it carries historical limitations. Gateware emerged in the 90s  with a focus on low-level components (gates). ​Modern devices use LUTs rather than discrete gates. Circuitware focuses on the functional result: a complete, integrated digital circuit. It provides a professional, systems-oriented description that reflects complex architectures rather than just a collection of emulated gates.
+
+
+
+
+<h2>IX. The Advantages of the Circuitware Terminology</h2>
+    <p>Adopting the term circuitware represents a conceptual architecture shift from fixed-function hardware toward user-driven, programmable hardware architectures.
+<h3>A. Clarifying System Architecture</h3>
+     By utilizing the hardware-software-firmware-circuitware spectrum, systems engineers can accurately partition tasks. Tasks requiring maximum parallelism and strict determinism are allocated to circuitware. Tasks requiring sequential, complex state management are allocated to firmware or software.   
+
+<h3>B. Facilitating Rapid Prototyping and Acceleration</h3>
+   Circuitware enables rapid prototyping and hardware acceleration within a single reconfigurable platform. Because the term accurately implies "circuits," it encourages software engineers to view the FPGA not as a coprocessor executing code, but as a dynamic hardware accelerator capable of offloading heavy computational workloads via custom, parallel pipelines.
+     
+
+<h3>C. Aligning Verification and Validation</h3>
+   In defense and aerospace, Verification and Validation is heavily regulated (e.g., DO-254 for airborne electronic hardware). Treating FPGA designs as "firmware" frequently causes confusion regarding which safety-critical standards apply. Recognizing FPGA bitstreams as circuitware aligns the verification process with hardware testing methodologies (gate-level functional simulation, timing analysis and power analysis) rather than software unit testing.
+
+
+
+<h2>X. Conclusion</h2>
+    <p>Circuitware marks the end of the static hardware era by decoupling digital circuit function from physical fabrication, creating a medium where hardware becomes as malleable as software while maintaining the performance of dedicated silicon. This architectural shift acknowledges that we are no longer just writing code; we are building circuits on the fly. By adopting the circuitware terminology, we formally recognize a major perspective shift: programmable logic platforms like Versal ACAP and FPGAs are not code to be executed, but rather dynamic, user-driven hardware architectures. 
+</p>
+
+
+
+
+    </div>
+    
+
+
+
+
+
+    </div>
+
+
+
+    
+
+
+
+    </div>
+
+
+    <hr>
+<section id="references" style="font-size: 0.9em; color: #555;">
+  <h3>References</h3>
+  <p>
+    [1] <em>Hewlett-Packard Journal</em>, Vol. 46, No. 1, February 1995. 
+    Available: <a href="https://hparchive.com/Journals/HPJ-1995-02.pdf" target="_blank" rel="noopener noreferrer">https://hparchive.com/Journals/HPJ-1995-02.pdf</a>
+  </p>
+</section>
+</body>
+</html>
