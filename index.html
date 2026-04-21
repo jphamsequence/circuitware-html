@@ -160,12 +160,14 @@
     
     <h2>Formal Definition of Circuitware</h2>
     <p>The proposed definition for circuitware for modern systems engineering is as follows: </p>
+    
     <div style="background-color: #f1f5f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
         <strong>Definition:</strong> Circuitware is user-defined, reconfigurable digital circuitry realized through FPGA implementation.
     </div>
     </p>
         This definition emphasizes three critical elements:
         </p>
+    <ul>
     <div style="background-color: #f1f5f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
     <li><strong>User-Defined:</strong> The hardware architecture is dictated by the design engineer rather than the silicon foundry.  </li>
         <li><strong>Reconfigurable:</strong> It acknowledges the dynamic, non-permanent nature of the medium.</li>
@@ -173,12 +175,12 @@
     
     
     </div>
-
+</ul>
     <h2>The Case for Circuitware</h2>
     <p>Unlike firmware, which merely commands a pre-existing processor, circuitware constructs the processing architecture itself. By leveraging circuitware, defense systems achieve:</p>
     <ul>
          <div style="background-color: #f1f5f9; padding: 20px; border-radius: 8px; margin: 20px 0;">   
-        <li><strong>Modifying digital logic in the field without fabricating new physical circuits.</li>
+        <li><strong>Dynamic Adaptability: </strong> Modifying digital logic in the field without fabricating new physical circuits.</li>
         <li><strong>Hardware Acceleration:</strong> Offloading parallel tasks (cryptography, radar signal processing) from CPUs to dedicated, spatially-oriented digital logic.</li>
         <li><strong>System Customization:</strong> Creating processing pipelines within a single reconfigurable platform.</li>
         </div>
@@ -187,11 +189,17 @@
     <h2>Circuitware in Modern Heterogeneous Architectures: AMD Xilinx Versal ACAP</h2>
     <p>The necessity of the term Circuitware is most apparent when examining the latest generation of Adaptive Compute Acceleration Platforms (ACAPs), such as the AMD Versal series. Unlike traditional FPGAs, an ACAP integrates multiple compute domains on a single die. ​In a Versal ACAP, the system is partitioned into three distinct engines:</p>
     <p>
+
+        <ul>
         <div style="background-color: #f1f5f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-<li><strong>Scalar Engines:</strong> Standard ARM processors that run high-level Software.
+        <li><strong>Scalar Engines:</strong> Standard ARM processors that run high-level Software.
         <li><strong>Intelligent Engines:</strong> Hardened AI and DSP vector processors that execute instruction-based Firmware.</li>
         <li><strong>Adaptable Engines:</strong> The programmable logic fabric.</li>
-</div>
+    </div>    
+    </ul>
+
+
+    
 <p> The designs instantiated within the Adaptable Engines are the Circuitware. By using this specific term, systems engineers can distinguish the custom, parallel digital circuits from the software and firmware running on the adjacent Scalar and Intelligent engines. This clarity is vital for modern defense projects where the Hardware Shell (fixed NoC and memory controllers) must be managed separately from the user-defined logic.</p>
    
 <p>
